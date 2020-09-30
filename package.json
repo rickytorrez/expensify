@@ -3,23 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "babel-loader": "^8.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.4",
-    "enzyme-to-json": "^3.5.0",
-    "jest": "^26.4.2",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "normalizecss": "^3.0.0",
-    "raf": "^3.4.1",
     "react": "^16.13.1",
     "react-addons-shallow-compare": "^15.6.2",
     "react-dates": "^21.8.0",
@@ -27,15 +16,13 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
-    "sass-loader": "6.0.6",
-    "uuid": "^8.3.0"
+    "sass-loader": "6.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --config=jest.config.json",
+    "test": "jest --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -52,8 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4"
   }
 }
