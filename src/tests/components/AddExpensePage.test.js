@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AddExpensePage } from '../../components/AddExpensePage';
+import toJSON from 'enzyme-to-json';
 
 test('should render AddExpensePage correctly', () => {
   const onSubmit = jest.fn();
@@ -8,5 +9,5 @@ test('should render AddExpensePage correctly', () => {
   const wrapper = shallow(
     <AddExpensePage onSubmit={onSubmit} history={history} />
   );
-  expect(wrapper).toMatchSnapshot();
+  expect(toJSON(wrapper)).toMatchSnapshot();
 });
