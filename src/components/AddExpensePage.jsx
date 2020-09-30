@@ -5,19 +5,14 @@ import ExpenseForm from './ExpenseForm';
 
 export const AddExpensePage = (props) => {
   const onSubmit = (expense) => {
-    this.props.onSubmit(expense);
-    this.props.history.push('/');
+    props.onSubmit(expense);
+    props.history.push('/');
   };
 
   return (
     <div>
       <h1>Add Expense</h1>
-      <ExpenseForm
-        onSubmit={(expense) => {
-          props.dispatch(addExpense(expense));
-          props.history.push('/');
-        }}
-      />
+      <ExpenseForm onSubmit={onSubmit} />
     </div>
   );
 };
