@@ -15,18 +15,35 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-// --- Subscribing to data changes off of the expense ref ---
-database.ref('expenses').on('value', (snapshot) => {
-  const expenses = [];
+// --- Firebase version of array list ---
 
-  snapshot.forEach((childSnapshot) => {
-    expenses.push({
-      id: childSnapshot.key,
-      ...childSnapshot.val(),
-    });
-  });
-  console.log(expenses);
+// --- child_removed event ---
+database.ref('expenses').on('child_removed', (snapshot) => {
+  console.log(snapshot.key, snapshot.val());
 });
+
+// --- child_changed event ---
+database.ref('expenses').on('child_changed', (snapshot) => {
+  console.log(snapshot.key, snapshot.val());
+});
+
+// --- child_added event ---
+database.ref('expenses').on('child_added', (snapshot) => {
+  console.log(snapshot.key, snapshot.val());
+});
+
+// --- Subscribing to data changes off of the expense ref ---
+// database.ref('expenses').on('value', (snapshot) => {
+//   const expenses = [];
+
+//   snapshot.forEach((childSnapshot) => {
+//     expenses.push({
+//       id: childSnapshot.key,
+//       ...childSnapshot.val(),
+//     });
+//   });
+//   console.log(expenses);
+// });
 
 // --- Reading data off of the expense ref once ---
 // database
@@ -49,7 +66,7 @@ database.ref('expenses').on('value', (snapshot) => {
 // database.ref('expenses').push({
 //   description: 'coffee',
 //   amount: 345,
-//   note: 'lavaza',
+//   note: 'lavazaa',
 //   createdAt: 'Oct 2nd, 2020',
 // });
 
