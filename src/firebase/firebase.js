@@ -15,22 +15,56 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref('expenses').push({
-  description: 'coffee',
-  amount: 345,
-  note: 'lavaza',
-  createdAt: 'Oct 2nd, 2020',
+// --- Subscribing to data changes off of the expense ref ---
+database.ref('expenses').on('value', (snapshot) => {
+  const expenses = [];
+
+  snapshot.forEach((childSnapshot) => {
+    expenses.push({
+      id: childSnapshot.key,
+      ...childSnapshot.val(),
+    });
+  });
+  console.log(expenses);
 });
 
+// --- Reading data off of the expense ref once ---
+// database
+//   .ref('expenses')
+//   .once('value')
+//   .then((snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val(),
+//       });
+//     });
+
+//     console.log(expenses);
+//   });
+
+// --- Creating individual expenses ---
+// database.ref('expenses').push({
+//   description: 'coffee',
+//   amount: 345,
+//   note: 'lavaza',
+//   createdAt: 'Oct 2nd, 2020',
+// });
+
+// --- Creating individual notes ---
 // database.ref('notes').push({
 //   title: 'course topics',
 //   body: 'gatsby, native',
 // });
 
+// --- Removing a specific note by id ---
 // database.ref('notes/-MIjfJjECVXFVsr_wEM-').remove();
 
 // database.ref('notes').set(notes);
 
+// --- Subscribing to the database for changes ---
 // database.ref().on(
 //   'value',
 //   (snapshot) => {
